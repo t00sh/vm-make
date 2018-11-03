@@ -11,8 +11,8 @@ all: $(CONF_BUSYBOX_DONE) $(CONF_MODULE_KO)
 	cd $(BUILD) && mkdir -p bin sbin etc proc sys usr/bin usr/sbin
 	cp -a $(CONF_BUSYBOX_INSTALL)/* $(BUILD)/
 	cp -a $(CONF_MODULE_KO) $(BUILD)/
-	cp -a $(CONF_LINUX_SYSTEMMAP) $(BUILD)/home/user
 	cp -a $(FS)/* $(BUILD)/
+	cp -a $(CONF_LINUX_SYSTEMMAP) $(BUILD)/
 	cd $(BUILD) && find . -print0 | cpio --null -ov --format=newc \
 		| gzip -9 > $(INITRAMFS)
 

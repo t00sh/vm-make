@@ -5,6 +5,7 @@ find / -exec chown root: {} \;
 find / -type d -exec chmod 0755 {} \;
 find /bin /sbin /usr -type f -exec chmod 0755 {} \;
 find /etc -type f -exec chmod 0644 {} \;
+mv /System.map /home/user
 chown user: /home/user -R
 
 # Mount points
