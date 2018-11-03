@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Set perms
+find / -exec chown root: {} \;
+find / -type d -exec chmod 0755 {} \;
+find /bin /sbin /usr -type f -exec chmod 0755 {} \;
+find /etc -type f -exec chmod 0644 {} \;
+chown user: /home/user -R
+
+# Mount points
+mount -t devtmpfs none /dev
+mount -t proc none /proc
+mount -t sysfs none /sys
+chmod 0444 /proc/slabinfo
+
+# Insert module
+insmod /vuln.ko
+
+# Shell
+cat /etc/issue
+export ENV=/etc/profile
+setsid cttyhack setuidgid 1000 sh
+
+poweroff -f
