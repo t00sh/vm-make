@@ -1,7 +1,5 @@
 .PHONY: clean distclean
 
--include ../Makefile.inc
-
 URL=$(CONF_LINUX_URL)
 BUILD=$(CONF_LINUX_BUILD)/build
 SRC=$(CONF_LINUX_BUILD)/src
@@ -31,7 +29,8 @@ $(ARCHIVE):
 	wget $(URL) -O $(ARCHIVE)
 
 clean:
-	rm -rf $(BZIMAGE)
+	rm -rf $(BZIMAGE) $(CONFIG)
 
 distclean:
-	rm -rf $(SYSTEM_MAP) $(ARCHIVE) $(BUILD) $(BZIMAGE) $(SRC) *~
+	rm -rf $(SYSTEM_MAP) $(ARCHIVE) $(BUILD) $(SRC) *~
+	rm -rf $(BZIMAGE) $(CONFIG)

@@ -1,7 +1,5 @@
 .PHONY: clean distclean all
 
--include ../Makefile.inc
-
 BUILD=$(CONF_BUILD)
 INITRAMFS=$(CONF_INITRAMFS_FINAL)
 BZIMAGE=$(CONF_LINUX_BZIMAGE)
@@ -10,6 +8,7 @@ SYSTEM_MAP=$(CONF_LINUX_SYSTEMMAP)
 BUILD_BZIMAGE=$(BUILD)/bzImage
 BUILD_INITRAMFS=$(BUILD)/initramfs.cpio.gz
 BUILD_SYSTEMMAP=$(BUILD)/System.map
+BUILD_START=$(BUILD)/start.sh
 
 all:
 	cp $(INITRAMFS) $(BUILD_INITRAMFS)
@@ -20,6 +19,7 @@ clean:
 	rm -f $(BUILD_INITRAMFS)
 	rm -f $(BUILD_BZIMAGE)
 	rm -f $(BUILD_SYSTEMMAP)
+	rm -f $(BUILD_START)
 	rm -f *~
 
 distclean: clean

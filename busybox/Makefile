@@ -1,7 +1,5 @@
 .PHONY: clean distclean
 
--include ../Makefile.inc
-
 URL=$(CONF_BUSYBOX_URL)
 BUILD=$(CONF_BUSYBOX_BUILD)/build
 SRC=$(CONF_BUSYBOX_BUILD)/src
@@ -31,7 +29,8 @@ $(BUILD_DONE): $(SRC_DONE)
 
 
 clean:
-	rm -rf $(BUILD_DONE)
+	rm -rf $(BUILD_DONE) $(CONFIG)
 
 distclean:
 	rm -rf $(BUILD) $(SRC) $(ARCHIVE) *~
+	rm -rf $(BUILD_DONE) $(CONFIG)

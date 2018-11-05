@@ -14,6 +14,11 @@ mount -t proc none /proc
 mount -t sysfs none /sys
 chmod 0444 /proc/slabinfo
 
+# Share
+mkdir -p /mnt/
+mount -t 9p -o trans=virtio mountpoint /mnt/ -oversion=9p2000.L,posixacl,sync
+chmod 777 /mnt/
+
 # Insert module
 insmod /vuln.ko
 

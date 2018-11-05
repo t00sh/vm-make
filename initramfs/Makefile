@@ -17,7 +17,6 @@ all: $(CONF_BUSYBOX_DONE) $(CONF_MODULE_KO)
 		| gzip -9 > $(INITRAMFS)
 
 clean:
-	rm -rf $(INITRAMFS)
+	rm -rf $(INITRAMFS) $(BUILD) $(INITRAMFS) $(FS) *~
 
-distclean:
-	rm -rf $(BUILD) $(INITRAMFS) *~
+distclean: clean
