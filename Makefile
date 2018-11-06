@@ -8,6 +8,11 @@ $(error $1 undefined !))
 # Check defined variables
 $(call check_defined, CONF_TEMPLATE)
 
+# Check if template exist...
+ifeq (,$(wildcard $(CONF_TEMPLATE)))
+$(error $(CONF_TEMPLATE) not found)
+endif
+
 # Templates variables...
 export CONF_TEMPLATE_MAKEFILE=$(CONF_TEMPLATE)/Makefile.inc
 export CONF_TEMPLATE_FS=$(CONF_TEMPLATE)/fs
