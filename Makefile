@@ -1,8 +1,12 @@
 .PHONY: all clean distclean help
 
-ifndef CONF_TEMPLATE
-$(error You must define CONF_TEMPLATE variable)
-endif
+
+# Define functions to check undefined variables
+check_defined = $(if $(value $(strip $1)),,\
+$(error $1 undefined !))
+
+# Check defined variables
+$(call check_defined, CONF_TEMPLATE)
 
 # Templates variables...
 export CONF_TEMPLATE_MAKEFILE=$(CONF_TEMPLATE)/Makefile.inc
@@ -13,6 +17,12 @@ export CONF_TEMPLATE_START=$(CONF_TEMPLATE)/start.sh
 export CONF_TEMPLATE_MODULE=$(CONF_TEMPLATE)/vuln.c
 
 -include $(CONF_TEMPLATE_MAKEFILE)
+
+# Check defined variables
+$(call check_defined, CONF_LINUX_ARCHIVE)
+$(call check_defined, CONF_LINUX_URL)
+$(call check_defined, CONF_BUSYBOX_ARCHIVE)
+$(call check_defined, CONF_CPUS)
 
 # Root directory
 export CONF_ROOT=$(PWD)
@@ -35,6 +45,7 @@ export CONF_INITRAMFS_FINAL=$(CONF_INITRAMFS_BUILD)/initramfs.cpio.gz
 # Module build directory
 export CONF_MODULE_BUILD=$(CONF_ROOT)/module
 export CONF_MODULE_KO=$(CONF_MODULE_BUILD)/vuln.ko
+export CONF_MODULE_C=$(CONF_MODULE_BUILD)/vuln.c
 
 # Build directory
 export CONF_BUILD=$(CONF_ROOT)/build
@@ -44,8 +55,6 @@ export CONF_BUILD=$(CONF_ROOT)/build
 # all rule
 ##################################################################
 all:
-	make -C $(CONF_INITRAMFS_BUILD) clean
-	make -C $(CONF_BUILD) clean
 	cp -a $(CONF_TEMPLATE_FS) $(CONF_INITRAMFS_BUILD)
 	cp -a $(CONF_TEMPLATE_BUSYBOX_CONF) $(CONF_BUSYBOX_BUILD)/config
 	cp -a $(CONF_TEMPLATE_LINUX_CONF) $(CONF_LINUX_BUILD)/config
@@ -65,10 +74,10 @@ all:
 # clean rule
 ##################################################################
 clean:
-	make -C $(CONF_MODULE_BUILD) clean ; \
-	make -C $(CONF_LINUX_BUILD) clean ; \
-	make -C $(CONF_BUSYBOX_BUILD) clean ; \
-	make -C $(CONF_INITRAMFS_BUILD) clean ; \
+	make -C $(CONF_MODULE_BUILD) clean
+	make -C $(CONF_LINUX_BUILD) clean
+	make -C $(CONF_BUSYBOX_BUILD) clean
+	make -C $(CONF_INITRAMFS_BUILD) clean
 	make -C $(CONF_BUILD) clean
 	rm -f *~
 
@@ -76,10 +85,10 @@ clean:
 # distclean rule
 ##################################################################
 distclean:
-	make -C $(CONF_MODULE_BUILD) distclean ; \
-	make -C $(CONF_LINUX_BUILD) distclean ; \
-	make -C $(CONF_BUSYBOX_BUILD) distclean ; \
-	make -C $(CONF_INITRAMFS_BUILD) distclean ; \
+	make -C $(CONF_MODULE_BUILD) distclean
+	make -C $(CONF_LINUX_BUILD) distclean
+	make -C $(CONF_BUSYBOX_BUILD) distclean
+	make -C $(CONF_INITRAMFS_BUILD) distclean
 	make -C $(CONF_BUILD) distclean
 	rm -f *~
 

@@ -1,5 +1,15 @@
 .PHONY: clean distclean all
 
+# Define functions to check undefined variables
+check_defined = $(if $(value $(strip $1)),,\
+$(error $1 undefined !))
+
+$(call check_defined, CONF_BUILD)
+$(call check_defined, CONF_INITRAMFS_FINAL)
+$(call check_defined, CONF_LINUX_BZIMAGE)
+$(call check_defined, CONF_LINUX_SYSTEMMAP)
+$(call check_defined, CONF_MODULE_C)
+
 BUILD=$(CONF_BUILD)
 INITRAMFS=$(CONF_INITRAMFS_FINAL)
 BZIMAGE=$(CONF_LINUX_BZIMAGE)

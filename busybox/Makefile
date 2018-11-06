@@ -1,5 +1,13 @@
 .PHONY: clean distclean
 
+# Define functions to check undefined variables
+check_defined = $(if $(value $(strip $1)),,\
+$(error $1 undefined !))
+
+$(call check_defined, CONF_BUSYBOX_URL)
+$(call check_defined, CONF_BUSYBOX_BUILD)
+$(call check_defined, CONF_BUSYBOX_ARCHIVE)
+
 URL=$(CONF_BUSYBOX_URL)
 BUILD=$(CONF_BUSYBOX_BUILD)/build
 SRC=$(CONF_BUSYBOX_BUILD)/src
