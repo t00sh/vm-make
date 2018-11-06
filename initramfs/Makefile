@@ -21,7 +21,7 @@ MODULE_KO=$(CONF_MODULE_KO)
 BUSYBOX_INSTALL=$(CONF_BUSYBOX_INSTALL)
 SYSTEMMAP=$(CONF_LINUX_SYSTEMMAP)
 
-all: $(BUSYBOX_DONE) $(MODULE_KO) clean
+all: $(BUSYBOX_DONE) $(MODULE_KO)
 	mkdir -p $(BUILD)
 	cd $(BUILD) && mkdir -p bin sbin etc proc sys usr/bin usr/sbin
 	cp -a $(BUSYBOX_INSTALL)/* $(BUILD)/

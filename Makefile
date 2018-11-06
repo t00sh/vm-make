@@ -54,16 +54,19 @@ export CONF_MODULE_C=$(CONF_MODULE_BUILD)/vuln.c
 
 # Build directory
 export CONF_BUILD=$(CONF_ROOT)/build
-
+export CONF_BUILD_VM=$(CONF_BUILD)/vm
 
 ##################################################################
 # all rule
 ##################################################################
 all:
+	make -C $(CONF_INITRAMFS_BUILD) clean
+	make -C $(CONF_BUILD) clean
+	mkdir -p $(CONF_BUILD_VM)
 	cp -a $(CONF_TEMPLATE_FS) $(CONF_INITRAMFS_BUILD)
 	cp -a $(CONF_TEMPLATE_BUSYBOX_CONF) $(CONF_BUSYBOX_BUILD)/config
 	cp -a $(CONF_TEMPLATE_LINUX_CONF) $(CONF_LINUX_BUILD)/config
-	cp -a $(CONF_TEMPLATE_START) $(CONF_BUILD)
+	cp -a $(CONF_TEMPLATE_START) $(CONF_BUILD_VM)
 	cp -a $(CONF_TEMPLATE_MODULE) $(CONF_MODULE_BUILD)
 	make -C $(CONF_LINUX_BUILD)
 	make -C $(CONF_BUSYBOX_BUILD)
