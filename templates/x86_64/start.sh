@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Create mount point if needed
+mkdir -p mountpoint/
+
+# Running QEMU
 qemu-system-x86_64 \
     -kernel ./bzImage \
     -initrd ./initramfs.cpio.gz  \
