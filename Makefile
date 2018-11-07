@@ -68,6 +68,7 @@ all:
 	cp -a $(CONF_TEMPLATE_LINUX_CONF) $(CONF_LINUX_BUILD)/config
 	cp -a $(CONF_TEMPLATE_START) $(CONF_BUILD_VM)
 	cp -a $(CONF_TEMPLATE_MODULE) $(CONF_MODULE_BUILD)
+	find . -name "*~" -delete
 	make -C $(CONF_LINUX_BUILD)
 	make -C $(CONF_BUSYBOX_BUILD)
 	make -C $(CONF_MODULE_BUILD)
