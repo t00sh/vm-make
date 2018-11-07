@@ -11,3 +11,4 @@ clean:
 	make -C $(CONF_LINUX_HEADERS) M=$(shell realpath ./) clean || true
 
 distclean: clean
+	rm vuln.c
