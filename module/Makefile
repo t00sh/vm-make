@@ -1,5 +1,3 @@
--include ../Makefile.inc
-
 ifndef CONF_LINUX_HEADERS
 $(error CONF_LINUX_HEADERS undefined)
 endif
