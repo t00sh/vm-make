@@ -13,5 +13,5 @@ make CONF_TEMPLATE=./templates/x86_64/
 To execute the VM just run :
 
 ``` shell
-cd ./build && ./start.sh
+cd ./build/vm && ./start.sh
 ```
