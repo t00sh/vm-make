@@ -4,4 +4,4 @@ else
     COLOR="34"
     cd /home/user
 fi
-export PS1="\e[01;${COLOR}m$(whoami)@slub-vm\[\033[00m\]:\[\033[36m\]\w\[\033[00m\]\$ "
+export PS1="\e[01;${COLOR}m$(whoami)@vm\[\033[00m\]:\[\033[36m\]\w\[\033[00m\]\$ "
