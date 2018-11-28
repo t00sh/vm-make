@@ -1,3 +1,15 @@
+# Architecture Linux
+export CONF_LINUX_ARCH=x86
+
+# Linux kernel image name
+export CONF_LINUX_IMG=bzImage
+
+# Architecture busybox
+export CONF_BUSYBOX_ARCH=x86_64
+
+# Cross-compiler prefix
+export CONF_CROSS_COMPILE_PREFIX=
+
 # Name of the Linux TAR archive
 export CONF_LINUX_ARCHIVE=linux-4.18.16.tar.xz
 

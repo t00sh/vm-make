@@ -7,7 +7,9 @@ $(error $1 undefined !))
 $(call check_defined, CONF_BUSYBOX_URL)
 $(call check_defined, CONF_BUSYBOX_BUILD)
 $(call check_defined, CONF_BUSYBOX_ARCHIVE)
+$(call check_defined, CONF_BUSYBOX_ARCH)
 
+# General setup
 URL=$(CONF_BUSYBOX_URL)
 BUILD=$(CONF_BUSYBOX_BUILD)/build
 SRC=$(CONF_BUSYBOX_BUILD)/src
@@ -15,6 +17,10 @@ ARCHIVE=$(CONF_BUSYBOX_BUILD)/$(CONF_BUSYBOX_ARCHIVE)
 CONFIG=$(CONF_BUSYBOX_BUILD)/config
 SRC_DONE=$(SRC)/.done
 BUILD_DONE=$(CONF_BUSYBOX_DONE)
+
+# Architecture setup
+export ARCH=$(CONF_BUSYBOX_ARCH)
+export CROSS_COMPILE=$(CONF_CROSS_COMPILE_PREFIX)
 
 all: $(BUILD_DONE)
 
