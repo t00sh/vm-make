@@ -4,21 +4,17 @@
 check_defined = $(if $(value $(strip $1)),,\
 $(error $1 undefined !))
 
-$(call check_defined, CONF_BUILD)
 $(call check_defined, CONF_BUILD_VM)
 $(call check_defined, CONF_INITRAMFS_FINAL)
 $(call check_defined, CONF_LINUX_BZIMAGE)
 $(call check_defined, CONF_LINUX_SYSTEMMAP)
 $(call check_defined, CONF_MODULE_C)
 
-
-BUILD=$(CONF_BUILD)
+BUILD_VM=$(CONF_BUILD_VM)
 INITRAMFS=$(CONF_INITRAMFS_FINAL)
 BZIMAGE=$(CONF_LINUX_BZIMAGE)
 SYSTEM_MAP=$(CONF_LINUX_SYSTEMMAP)
 MODULE_C=$(CONF_MODULE_C)
-
-BUILD_VM=$(BUILD)/vm
 
 all:
 	cp $(INITRAMFS) $(BUILD_VM)

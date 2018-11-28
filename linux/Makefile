@@ -4,7 +4,6 @@
 check_defined = $(if $(value $(strip $1)),,\
 $(error $1 undefined !))
 
-$(call check_defined, CONF_LINUX_URL)
 $(call check_defined, CONF_LINUX_BUILD)
 $(call check_defined, CONF_LINUX_BZIMAGE)
 $(call check_defined, CONF_LINUX_SYSTEMMAP)
@@ -12,7 +11,6 @@ $(call check_defined, CONF_LINUX_ARCHIVE)
 $(call check_defined, CONF_LINUX_ARCH)
 
 # General setup
-URL=$(CONF_LINUX_URL)
 BUILD=$(CONF_LINUX_BUILD)/build
 SRC=$(CONF_LINUX_BUILD)/src
 CONFIG=$(CONF_LINUX_BUILD)/config
@@ -42,7 +40,11 @@ $(SRC_DONE): $(ARCHIVE)
 	touch $@
 
 $(ARCHIVE):
-	wget $(URL) -O $(ARCHIVE)
+	if test -z "$(CONF_LINUX_URL)"; then \
+	  cp ../$(CONF_TEMPLATE)/$(CONF_LINUX_ARCHIVE) $(ARCHIVE); \
+	else \
+	  wget $(CONF_LINUX_URL) -O $(ARCHIVE); \
+	fi;
 
 clean:
 	rm -rf $(BZIMAGE) $(CONFIG)

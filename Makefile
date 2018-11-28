@@ -25,7 +25,6 @@ export CONF_TEMPLATE_MODULE=$(CONF_TEMPLATE)/vuln.c
 
 # Check defined variables
 $(call check_defined, CONF_LINUX_ARCHIVE)
-$(call check_defined, CONF_LINUX_URL)
 $(call check_defined, CONF_BUSYBOX_ARCHIVE)
 $(call check_defined, CONF_CPUS)
 
@@ -54,7 +53,7 @@ export CONF_MODULE_C=$(CONF_MODULE_BUILD)/vuln.c
 
 # Build directory
 export CONF_BUILD=$(CONF_ROOT)/build
-export CONF_BUILD_VM=$(CONF_BUILD)/vm
+export CONF_BUILD_VM=$(CONF_BUILD)/vm-$(shell basename $(CONF_TEMPLATE))
 
 ##################################################################
 # all rule
