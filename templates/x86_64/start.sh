@@ -5,6 +5,7 @@ mkdir -p mountpoint/
 
 # Running QEMU
 qemu-system-x86_64 \
+    -enable-kvm \
     -kernel ./bzImage \
     -initrd ./initramfs.cpio.gz  \
     -append 'console=ttyS0 loglevel=3 oops=panic panic=1' \
