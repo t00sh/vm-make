@@ -5,10 +5,10 @@ export CONF_LINUX_ARCH=x86
 export CONF_LINUX_IMG=bzImage
 
 # Architecture busybox
-export CONF_BUSYBOX_ARCH=x86_64
+export CONF_BUSYBOX_ARCH=i386
 
 # Cross-compiler prefix
-export CONF_CROSS_COMPILE_PREFIX=
+export CONF_CROSS_COMPILE_PREFIX=i686-linux-gnu-
 
 # Name of the Linux TAR archive
 export CONF_LINUX_ARCHIVE=linux-4.18.16.tar.xz

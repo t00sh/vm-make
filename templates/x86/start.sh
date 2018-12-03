@@ -4,7 +4,7 @@
 mkdir -p mountpoint/
 
 # Running QEMU
-qemu-system-x86_64 \
+qemu-system-i386 \
     -enable-kvm \
     -kernel ./bzImage \
     -initrd ./initramfs.cpio.gz  \

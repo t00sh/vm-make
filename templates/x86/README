@@ -1,0 +1,11 @@
+		  Vanilla x86 Linux kernel Template
+		  =================================
+
+Nothing specific here, it is just a vanilla x86 (i386) Linux kernel
+template.
+
+Specific packages needed to build this challenge
+------------------------------------------------
+This challenge requires to install the Debian package
+'gcc-i686-linux-gnu' to cross-compile to i386 architecture.
+

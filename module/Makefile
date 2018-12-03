@@ -2,6 +2,9 @@ ifndef CONF_LINUX_HEADERS
 $(error CONF_LINUX_HEADERS undefined)
 endif
 
+export ARCH=$(CONF_LINUX_ARCH)
+export CROSS_COMPILE=$(CONF_CROSS_COMPILE_PREFIX)
+
 obj-m += vuln.o
 
 all:
