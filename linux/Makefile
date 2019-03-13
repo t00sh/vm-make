@@ -9,6 +9,7 @@ $(call check_defined, CONF_LINUX_BZIMAGE)
 $(call check_defined, CONF_LINUX_SYSTEMMAP)
 $(call check_defined, CONF_LINUX_ARCHIVE)
 $(call check_defined, CONF_LINUX_ARCH)
+$(call check_defined, CONF_LINUX_IMG)
 
 # General setup
 BUILD=$(CONF_LINUX_BUILD)/build
